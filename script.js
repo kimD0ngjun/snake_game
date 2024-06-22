@@ -1,5 +1,6 @@
 const canvas = document.getElementById('gameCanvas');
 const startBtn = document.getElementById('startBtn');
+const levelBoard = document.getElementById('levelBoard');
 const ctx = canvas.getContext('2d');
 const N = 26; // 게임판 사이즈
 const blockSize = canvas.height / N; // 단위 블록
@@ -9,6 +10,7 @@ let maps = Array.from({ length: N }, () => Array(N).fill(0)); // 게임 필드
 let direction = [1, 0]; // 처음 방향
 let bodyQueue = [{ x: 1, y: 1 }];  // 처음 뱀 위치
 let apples = []; // 사과 위치 튜플(배열) 요소 이중배열 -> 레벨이 높아지면 사과를 여러 개 배치하는 로직으로 재활용도 가능할듯
+let level = 1; // 레벨 변수
 
 // 랜덤한 위치에 사과 배치
 function placeApple() {
@@ -86,6 +88,9 @@ function game() {
             apples.splice(i, 1);
             // 새로운 사과 배치
             placeApple();
+            // 레벨 업
+            level++;
+            levelBoard.textContent = level;
 
             break;
         }
