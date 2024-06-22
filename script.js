@@ -128,7 +128,12 @@ function game() {
 }
 
 // 게임 시작~
-startBtn.addEventListener("click", game)
+startBtn.addEventListener("click", () => {
+    game();
+    startBtn.disabled = true;
+    startBtn.textContent = "EAT APPLE !";
+}
+)
 
 // 방향키 조정해서 나아갈 방향 업뎃
 document.addEventListener('keydown', (event) => {
