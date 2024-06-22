@@ -67,7 +67,7 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #28a745;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -75,13 +75,14 @@ button {
 }
 
 button:hover:enabled {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 button:disabled {
     background-color: #aaa;
     cursor: not-allowed;
 }
+
 section {
     display: flex;
     flex-direction: column;
@@ -89,7 +90,7 @@ section {
     margin-top: 20px;
 }
 
-section h1 {
+/* section h1 {
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
@@ -98,4 +99,4 @@ section h1 {
 section p {
     font-size: 18px;
     color: #666;
-}
+} */
