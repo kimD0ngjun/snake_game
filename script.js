@@ -1,6 +1,8 @@
 const canvas = document.getElementById('gameCanvas');
 const startBtn = document.getElementById('startBtn');
 const levelBoard = document.getElementById('levelBoard');
+const scoreBoard = document.getElementById('scoreBoard');
+let score = parseInt(scoreBoard.textContent, 10) || 0;
 const ctx = canvas.getContext('2d');
 const N = 26; // 게임판 사이즈
 const blockSize = canvas.height / N; // 단위 블록
@@ -11,6 +13,7 @@ let direction = [1, 0]; // 처음 방향
 let bodyQueue = [{ x: 1, y: 1 }];  // 처음 뱀 위치
 let apples = []; // 사과 위치 튜플(배열) 요소 이중배열 -> 레벨이 높아지면 사과를 여러 개 배치하는 로직으로 재활용도 가능할듯
 let level = 1; // 레벨 변수
+let moveInterval = 50; // 점수 계산용 움직임 간격 초기화 변수
 
 // 랜덤한 위치에 사과 배치
 function placeApple() {
@@ -67,7 +70,7 @@ function game() {
     // 1. 맵 밖(벽)으로 향한다
     // 2. 자기 몸(1)이랑 부딪힌다
     if (x < 0 || x >= N || y < 0 || y >= N || maps[x][y] === 1) {
-        alert('Game Over!\n\n게임을 초기화합니다');
+        alert(`Game Over!\n\n진행 레벨: ${level} 단계\n최종 점수: ${score} 점\n게임을 초기화합니다`);
         location.reload();
 
         //todo: 여기다가 게임 재시작, 점수 환산 및 저장 로직 함수
@@ -91,6 +94,10 @@ function game() {
             // 레벨 업
             level++;
             levelBoard.textContent = level;
+            // 점수 계산 및 움직임 간격 초기화
+            score += moveInterval * 2;
+            scoreBoard.textContent = score.toString().padStart(5, '0');
+            moveInterval = 50;
 
             break;
         }
@@ -107,6 +114,13 @@ function game() {
 
     // 위에서 업뎃된 정보들 바탕으로 캔버스 다시 드로잉
     draw();
+
+    // 점수 계산용 움직임 포인트 업데이트
+    if (moveInterval === 0) {
+        moveInterval = 0;
+    } else {
+        moveInterval--;
+    }
 
     // 분기 단위시간 조정(줄일 수록 빡세겠지)
     // 60, hard는 45
