@@ -1,0 +1,26 @@
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#gameCanvas { 
+    background-color: #eee; 
+    display: block; 
+    margin: 0 auto;
+}
+
+#gameBoard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}

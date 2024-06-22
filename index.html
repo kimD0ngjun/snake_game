@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/css/IndexLogo.svg" />
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="520" height="520"></canvas>
+        <section id="gameBoard" class="tab">
+            <div class="gameBoard">
+                <button id="startBtn" type="button" class="board">START</button>
+            </div>
+            <div class="gameBoard">
+                <div class="system">LEVEL</div>
+                <div id="levelBoard" class="board">0</div>
+            </div>
+            <div class="gameBoard">
+                <div class="system">SCORE</div>
+                <div id="scoreBoard" class="board">00000</div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
